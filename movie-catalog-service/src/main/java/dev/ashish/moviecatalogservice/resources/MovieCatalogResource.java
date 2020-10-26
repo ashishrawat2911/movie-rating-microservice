@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +17,8 @@ import java.util.stream.Collectors;
 public class MovieCatalogResource {
     @Autowired
     RestTemplate restTemplate;
-    @Autowired
-    WebClient.Builder webClient;
+//    @Autowired
+//    WebClient.Builder webClient;
 
     @RequestMapping("/{userId}")
     List<CatalogItem> getCatalog(@PathVariable("userId") String userId) throws Exception {
