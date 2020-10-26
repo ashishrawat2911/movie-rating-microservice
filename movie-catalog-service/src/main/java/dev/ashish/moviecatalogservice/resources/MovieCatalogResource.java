@@ -23,13 +23,13 @@ public class MovieCatalogResource {
     @RequestMapping("/{userId}")
     List<CatalogItem> getCatalog(@PathVariable("userId") String userId) throws Exception {
 
-        UserRating userRating = restTemplate.getForObject("http://localhost:8083/rating/users/" + userId, UserRating.class);
+        UserRating userRating = restTemplate.getForObject("http://movie-rating-service/rating/users/" + userId, UserRating.class);
 
         return userRating.getRatings().
                 stream()
                 .map(rating ->
                 {
-                    Movie movie = restTemplate.getForObject("http://localhost:8082/movie/" + rating.getMovieId(), Movie.class);
+                    Movie movie = restTemplate.getForObject("http://movie-info-service/movie/" + rating.getMovieId(), Movie.class);
 //                    Movie movie = webClient
 //                            .build()
 //                            .get()
