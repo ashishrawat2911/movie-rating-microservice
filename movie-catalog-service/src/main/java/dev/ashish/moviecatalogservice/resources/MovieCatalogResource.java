@@ -23,7 +23,7 @@ public class MovieCatalogResource {
     @RequestMapping("/{userId}")
     List<CatalogItem> getCatalog(@PathVariable("userId") String userId) throws Exception {
 
-        UserRating userRating = restTemplate.getForObject("http://movie-rating-service/rating/users/" + userId, UserRating.class);
+        UserRating userRating = restTemplate.getForObject("http://movie-rating-service/rating/user/" + userId, UserRating.class);
 
         return userRating.getRatings().
                 stream()
@@ -37,7 +37,7 @@ public class MovieCatalogResource {
 //                            .retrieve()
 //                            .bodyToMono(Movie.class)
 //                            .block();
-                    return new CatalogItem(movie.getMovieName(), "", rating.getRating());
+                    return new CatalogItem(movie.getName(), movie.getDescription(), rating.getRating());
                 })
                 .collect(Collectors.toList());
     }
