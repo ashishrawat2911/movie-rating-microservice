@@ -7,6 +7,7 @@ public class UserRating {
     }
 
     private List<Rating> ratings;
+    private String userId;
 
     public List<Rating> getRatings() {
         return ratings;
@@ -14,5 +15,14 @@ public class UserRating {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
